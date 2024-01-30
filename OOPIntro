@@ -1,0 +1,46 @@
+#OOP 
+
+#player Character Example
+class PlayerCharacter: 
+    membership = True #Class Obj Attribute (Static)
+    def __init__(self, name, age): #dunder/constructor/init method (self, other identifiers/qualities)
+        if (age > 18):
+            self.name = name #Attributes
+            self.age = age
+
+    def run(self):
+        print('run')
+
+    def shout(self):
+        print(f'My name is {self.name}')
+
+#Decorators
+    @classmethod #method on the class, doesn't need an instance, not as common
+    def adding_things(cls, num1, num2):
+        return cls('teddy', num1 + num2)
+    
+    @staticmethod #usable regardless of the object. very uncommon. 
+    def adding_things2(num1, num2):
+        return num1 + num2
+
+player1 = PlayerCharacter('Steve', 44)
+player2 = PlayerCharacter('Amy', 24)
+
+
+#Cat test
+class Cat:
+    species = 'mammal'
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+def oldestCat(*cat):
+    return max(cat)
+
+
+cat1 = Cat('John', 12)
+cat2 = Cat('susie', 11)
+cat3 = Cat('Sushi', 3)
+
+print(f'Old cat is {oldestCat(cat1.age, cat2.age, cat3.age)} years old')
+
