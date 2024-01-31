@@ -1,46 +1,44 @@
-#OOP 
+class Pets():
+    animals = []
+    def __init__(self, animals):
+        self.animals = animals
 
-#player Character Example
-class PlayerCharacter: 
-    membership = True #Class Obj Attribute (Static)
-    def __init__(self, name, age): #dunder/constructor/init method (self, other identifiers/qualities)
-        if (age > 18):
-            self.name = name #Attributes
-            self.age = age
+    def walk(self):
+        for animal in self.animals:
+            print(animal.walk())
 
-    def run(self):
-        print('run')
+class Cat():
+    is_lazy = True
 
-    def shout(self):
-        print(f'My name is {self.name}')
-
-#Decorators
-    @classmethod #method on the class, doesn't need an instance, not as common
-    def adding_things(cls, num1, num2):
-        return cls('teddy', num1 + num2)
-    
-    @staticmethod #usable regardless of the object. very uncommon. 
-    def adding_things2(num1, num2):
-        return num1 + num2
-
-player1 = PlayerCharacter('Steve', 44)
-player2 = PlayerCharacter('Amy', 24)
-
-
-#Cat test
-class Cat:
-    species = 'mammal'
     def __init__(self, name, age):
         self.name = name
         self.age = age
 
-def oldestCat(*cat):
-    return max(cat)
+    def walk(self):
+        return f'{self.name} is just walking around'
 
+class Simon(Cat):
+    def sing(self, sounds):
+        return f'{sounds}'
 
-cat1 = Cat('John', 12)
-cat2 = Cat('susie', 11)
-cat3 = Cat('Sushi', 3)
+class Sally(Cat):
+    def sing(self, sounds):
+        return f'{sounds}'
+    
+#--------------------------------------------------------------
+class Garfield(Cat):
+    def sing(self, sounds):
+        return f'{sounds}'
+    
+my_cats = []
+cat1 = Simon('Simon', 10)
+cat2 = Sally('Sally', 41)
+cat3 = Garfield('Garfield', 5)
 
-print(f'Old cat is {oldestCat(cat1.age, cat2.age, cat3.age)} years old')
+my_cats.append(cat1)
+my_cats.append(cat2)
+my_cats.append(cat3)
 
+my_pets = Pets(my_cats)
+
+my_pets.walk()
